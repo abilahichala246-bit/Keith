@@ -9,7 +9,8 @@ const {
   botBotname, 
   botPackname, 
   botMode, 
-  botSessionName 
+  botSessionName,
+  autosocialdownload
 } = require('../settings'); 
 
 const SettingsDB = database.define('settings', {
@@ -57,6 +58,11 @@ const SettingsDB = database.define('settings', {
         type: DataTypes.STRING,
         defaultValue: botSessionName,
         allowNull: false
+    },
+    autosocialdownload: {
+        type: DataTypes.STRING,
+        defaultValue: autosocialdownload,
+        allowNull: false
     }
 }, {
     timestamps: true,
@@ -80,7 +86,8 @@ async function initSettingsDB() {
                 botname: botBotname,
                 packname: botPackname,
                 mode: botMode,
-                sessionName: botSessionName
+                sessionName: botSessionName,
+                autosocialdownload: autosocialdownload
             });
             console.log('Bot settings defaults initialized from settings');
         }
@@ -103,7 +110,8 @@ async function getSettings() {
                 botname: botBotname,
                 packname: botPackname,
                 mode: botMode,
-                sessionName: botSessionName
+                sessionName: botSessionName,
+                autosocialdownload: autosocialdownload
             });
         }
         return settings;
@@ -119,7 +127,8 @@ async function getSettings() {
             botname: botBotname,
             packname: botPackname,
             mode: botMode,
-            sessionName: botSessionName
+            sessionName: botSessionName,
+            autosocialdownload: autosocialdownload
         };
     }
 }
